@@ -65,3 +65,7 @@
 .wysiwyg-color-orange {
   color: orange;
 }
+
+.wysiwyg-strikethrough {
+  text-decoration: line-through;
+}

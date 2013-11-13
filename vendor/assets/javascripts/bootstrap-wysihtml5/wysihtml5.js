@@ -7694,7 +7694,24 @@ wysihtml5.Commands = Base.extend(
       return undef;
     }
   };
-})(wysihtml5);/**
+})(wysihtml5);(function(wysihtml5) {
+  var undef;
+  wysihtml5.commands.strikethrough = {
+      exec: function(composer, command) {
+          return wysihtml5.commands.formatInline.exec(composer, command, "s");
+      },
+
+      state: function(composer, command) {
+          return wysihtml5.commands.formatInline.state(composer, command, "s");
+      },
+
+      value: function() {
+          return undef;
+      }
+  };
+})(wysihtml5);
+
+/**
  * Undo Manager for wysihtml5
  * slightly inspired by http://rniwa.com/editing/undomanager.html#the-undomanager-interface
  */
@@ -9434,10 +9451,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           this.toolbar = new wysihtml5.toolbar.Toolbar(this, this.config.toolbar);
         }
       });
-      
-      try {
-        console.log("Heya! This page is using wysihtml5 for rich text editing. Check out https://github.com/xing/wysihtml5");
-      } catch(e) {}
     },
     
     isCompatible: function() {
